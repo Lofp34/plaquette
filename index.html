@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine commerciale prévisible pour PME B2B</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg-dark: #0a0d16;
+      --bg-panel: #121728;
+      --text-main: #f5f7fb;
+      --text-muted: #9aa4c2;
+      --accent: #f2b705;
+      --accent-soft: rgba(242, 183, 5, 0.16);
+      --border: rgba(255, 255, 255, 0.08);
+      --max-width: 1200px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(10, 13, 22, 0.85);
+      border-bottom: 1px solid var(--border);
+    }
+
+    nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    .cta-btn {
+      padding: 0.85rem 1.8rem;
+      border-radius: 999px;
+      border: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: var(--bg-dark);
+      background: var(--accent);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 30px rgba(242, 183, 5, 0.35);
+    }
+
+    main {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem 4rem;
+    }
+
+    section {
+      margin-top: 4.5rem;
+      padding: 3rem;
+      border-radius: 28px;
+      border: 1px solid var(--border);
+      background: var(--bg-panel);
+    }
+
+    .hero {
+      margin-top: 2.5rem;
+      padding: 4.5rem 3rem;
+      background: radial-gradient(circle at top right, rgba(242, 183, 5, 0.12), transparent 45%), var(--bg-panel);
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(2.7rem, 6vw, 3.9rem);
+      line-height: 1.1;
+      margin: 0.75rem 0;
+    }
+
+    h2 {
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      margin-bottom: 0.5rem;
+    }
+
+    h3 {
+      margin-top: 0;
+      font-size: 1.2rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    p {
+      color: var(--text-muted);
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    ul {
+      padding-left: 1rem;
+      color: var(--text-muted);
+    }
+
+    .grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+
+    .card {
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.01);
+      min-height: 100%;
+    }
+
+    .before-after {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .before-after ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .before-after li {
+      padding: 0.9rem 0;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+
+    .before-after strong {
+      color: var(--text-main);
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--accent-soft);
+      color: var(--accent);
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .steps {
+      counter-reset: step;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .step {
+      position: relative;
+      padding-left: 3.5rem;
+      min-height: 3rem;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2.6rem;
+      height: 2.6rem;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      color: var(--accent);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 0;
+    }
+
+    .faq-item:last-child {
+      border-bottom: none;
+    }
+
+    footer {
+      margin: 4rem auto 2rem;
+      max-width: var(--max-width);
+      text-align: center;
+      padding: 2rem 1rem;
+      color: var(--text-muted);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 2.2rem;
+      }
+
+      .hero {
+        padding: 3rem 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">STRUCTURE SALES LAB</div>
+      <button class="cta-btn">Planifier un call</button>
+    </nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Accompagnement intensif B2B</div>
+        <h1>Transformez votre chaos commercial en machine de vente prévisible.</h1>
+        <p>Programme immersif pour dirigeants de PME B2B (5 à 30 M€ CA) qui veulent structurer leur organisation commerciale, accélérer la prospection et sécuriser chaque étape du pipeline.</p>
+        <div class="grid two">
+          <div class="card">
+            <h3>Après 12 semaines</h3>
+            <p>Méthode unifiée, rendez-vous structurés, narratif impactant et dirigeants focalisés sur la stratégie.</p>
+          </div>
+          <div class="card">
+            <h3>+20 % à +45 %</h3>
+            <p>d'amélioration moyenne du taux de transformation observée chez nos clients accompagnés.</p>
+          </div>
+        </div>
+        <button class="cta-btn">Réserver une conversation stratégique</button>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">Problèmes critiques</span>
+      <h2>Vous sentez le potentiel, mais rien n'est maîtrisé.</h2>
+      <p>Les équipes commerciales n'avancent pas au même rythme et chaque opportunité suit un parcours différent. Ce manque de structure génère des pertes invisibles.</p>
+      <div class="grid two">
+        <div class="card">
+          <ul>
+            <li>Pipeline incomplet, difficile à piloter.</li>
+            <li>Prospects qui stagnent, conversions trop lentes.</li>
+            <li>Rendez-vous peu préparés, narratif flou.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <ul>
+            <li>Managers occupés à éteindre les feux.</li>
+            <li>Commerciaux sans méthode homogène.</li>
+            <li>Perte d'opportunités, faible prévisibilité.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">Transformation</span>
+      <h2>Avant / Après : la nouvelle discipline commerciale.</h2>
+      <div class="before-after">
+        <div>
+          <h3>Avant</h3>
+          <ul>
+            <li>Méthodes hétérogènes, résultats irréguliers.</li>
+            <li>Prospection aléatoire.</li>
+            <li>Rendez-vous improvisés.</li>
+            <li>Discours flou et peu différenciant.</li>
+            <li>Managers en réaction permanente.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Après</h3>
+          <ul>
+            <li><strong>Méthode unifiée</strong> et pilotage clair.</li>
+            <li><strong>Machine de prospection</strong> régulière.</li>
+            <li><strong>Rendez-vous structurés</strong>, taux de conversion renforcé.</li>
+            <li><strong>Narratif clair</strong>, impactant, différenciant.</li>
+            <li><strong>Managers concentrés</strong> sur la stratégie.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">Offre complète</span>
+      <h2>6 piliers pour sécuriser votre performance commerciale.</h2>
+      <div class="grid three">
+        <div class="card">
+          <h3>Dojo de vente</h3>
+          <p>Entraînement intensif, jeux de rôle réalistes et répétitions ciblées pour industrialiser les réflexes de vos équipes.</p>
+        </div>
+        <div class="card">
+          <h3>Organisation alignée</h3>
+          <p>Processus clarifiés, outils harmonisés et méthode partagée par tous.</p>
+        </div>
+        <div class="card">
+          <h3>Pipeline pilotable</h3>
+          <p>Système simple, lisible, donnant une prévisibilité réelle à vos objectifs de croissance.</p>
+        </div>
+        <div class="card">
+          <h3>Coaching terrain</h3>
+          <p>Feedbacks individuels, plan de montée en compétence et accompagnement sur les deals clés.</p>
+        </div>
+        <div class="card">
+          <h3>Rituels de rendez-vous</h3>
+          <p>Scripts, checklists et cadrage pour sécuriser chaque étape du cycle de vente.</p>
+        </div>
+        <div class="card">
+          <h3>IA intégrée</h3>
+          <p>Automatisation RAG, production de contenus et gains de productivité immédiats pour vos équipes.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">Bénéfices</span>
+      <h2>Neuromarketing appliqué aux ventes B2B.</h2>
+      <div class="grid two">
+        <div class="card">
+          <h3>Biais d'autorité</h3>
+          <p>Accédez à l'expertise d'un spécialiste ayant structuré des dizaines d'équipes commerciales.</p>
+        </div>
+        <div class="card">
+          <h3>Heuristique de simplification</h3>
+          <p>Vos commerciaux savent quoi dire, quand et comment : moins de friction, plus d'impact.</p>
+        </div>
+        <div class="card">
+          <h3>Réduction du risque</h3>
+          <p>Un système de vente stable, reproductible, piloté sereinement par la direction.</p>
+        </div>
+        <div class="card">
+          <h3>Aversion à la perte</h3>
+          <p>Chaque prospect mal traité est un client perdu : nous stoppions l'hémorragie.</p>
+        </div>
+        <div class="card">
+          <h3>Projection positive</h3>
+          <p>Montée en compétence, conversions renforcées, croissance redevenue prévisible.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">Preuves</span>
+      <h2>Crédibilité mesurée sur le terrain.</h2>
+      <div class="grid two">
+        <div class="card">
+          <p><strong>+20 % à +45 %</strong> d'amélioration des taux de transformation après accompagnement.</p>
+          <p>Structuration complète réalisée pour des PME industrielles et services B2B entre 8 et 25 M€ de CA.</p>
+        </div>
+        <div class="card">
+          <p>Création d'un système commercial reproductible ayant permis de <strong>doubler la vitesse de prospection</strong> sans recrutement additionnel.</p>
+          <p>Références anonymisées par devoir de confidentialité.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">Processus</span>
+      <h2>Comment nous transformons votre organisation.</h2>
+      <div class="steps">
+        <div class="step">
+          <h3>Diagnostic express</h3>
+          <p>Audit flash de votre pipeline, rituels et outils pour isoler les fuites prioritaires.</p>
+        </div>
+        <div class="step">
+          <h3>Design de la machine</h3>
+          <p>Co-construction de la méthode, scripts, rituels et intégrations IA adaptés à votre équipe.</p>
+        </div>
+        <div class="step">
+          <h3>Dojo & coaching</h3>
+          <p>Entraînement intensif, accompagnement terrain et feedbacks hebdomadaires.</p>
+        </div>
+        <div class="step">
+          <h3>Pilotage & scale</h3>
+          <p>Mise en place d'indicateurs, boucles d'amélioration et transmission complète à vos managers.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">FAQ</span>
+      <h2>Questions fréquentes des dirigeants B2B.</h2>
+      <div class="faq-item">
+        <h3>Combien de temps dure l'accompagnement ?</h3>
+        <p>Le format standard s'étale sur 12 semaines intensives, avec possibilité d'extension selon la taille de votre équipe.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Est-ce adapté si je n'ai pas d'équipe commerciale dédiée ?</h3>
+        <p>Oui, nous structurons autant les dirigeants vendeurs que les forces commerciales constituées en priorisant les actions à effet immédiat.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Pouvez-vous intervenir en toute confidentialité ?</h3>
+        <p>Nos références sont anonymisées et un accord de confidentialité peut être signé avant toute intervention.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Quel investissement prévoir ?</h3>
+        <p>Le budget dépend du nombre de sessions de dojo et du niveau d'intégration IA. La conversation stratégique permet de dimensionner l'intervention.</p>
+      </div>
+    </section>
+
+    <section>
+      <span class="badge">Passer à l'action</span>
+      <h2>Le meilleur moment pour structurer était hier. Le deuxième, c'est maintenant.</h2>
+      <p>Le marché s'accélère, l'inaction coûte cher et l'IA redéfinit la donne. Ne laissez plus vos opportunités se perdre faute de système.</p>
+      <button class="cta-btn">Planifier une conversation stratégique de 20 min</button>
+      <p style="margin-top:1rem; color: var(--text-muted);">Sans engagement • 2 à 3 leviers prioritaires identifiés • Réservé aux dirigeants B2B</p>
+    </section>
+  </main>
+  <footer>
+    © 2024 Structure Sales Lab — Accélérateur commercial pour PME B2B.
+  </footer>
+</body>
+</html>

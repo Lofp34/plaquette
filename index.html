@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Structurer votre machine commerciale | Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0d111a;
+      --bg-alt: #151b29;
+      --card: rgba(255, 255, 255, 0.04);
+      --text: #f6f7fb;
+      --muted: #a3aec2;
+      --accent: #f1b634;
+      --line: rgba(255, 255, 255, 0.1);
+    }
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background-color: var(--bg);
+      line-height: 1.6;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .container {
+      width: min(1200px, 100%);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    header {
+      padding: 2rem 0;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .logo {
+      font-weight: 700;
+      font-size: 1.25rem;
+      letter-spacing: 0.08em;
+    }
+    .cta {
+      background-color: var(--accent);
+      color: #0f1828;
+      padding: 0.9rem 1.8rem;
+      border-radius: 999px;
+      font-weight: 600;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(241, 182, 52, 0.3);
+    }
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .hero {
+      padding: 6rem 0 4rem;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      align-items: center;
+    }
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      letter-spacing: 0.2em;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+    }
+    h1 {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      margin: 0 0 1.5rem;
+      line-height: 1.1;
+    }
+    h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 1rem;
+    }
+    p.lead {
+      font-size: 1.1rem;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .tagline {
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 1.2rem;
+      padding: 2rem;
+    }
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .list {
+      display: grid;
+      gap: 0.8rem;
+      color: var(--muted);
+    }
+    .list span {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .list span::before {
+      content: '\2713';
+      color: var(--accent);
+      font-weight: 700;
+      margin-top: 0.2rem;
+    }
+    .before-after {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.5rem;
+    }
+    .before-after ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.8rem;
+    }
+    .before-after li {
+      background: var(--card);
+      border-radius: 0.8rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.85rem;
+      padding: 0.4rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(241, 182, 52, 0.15);
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .stat-card {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+    }
+    .stat-card strong {
+      font-size: 2.2rem;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .process {
+      counter-reset: steps;
+      display: grid;
+      gap: 1rem;
+    }
+    .process-step {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+      position: relative;
+      padding-left: 4.5rem;
+    }
+    .process-step::before {
+      counter-increment: steps;
+      content: counter(steps, decimal-leading-zero);
+      position: absolute;
+      left: 1.5rem;
+      top: 1.5rem;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .faq-item {
+      background: var(--card);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      border: 1px solid var(--line);
+    }
+    footer {
+      text-align: center;
+      padding: 3rem 1.5rem 4rem;
+      background: #090d15;
+    }
+    footer p {
+      color: var(--muted);
+    }
+    @media (min-width: 768px) {
+      nav .cta {
+        margin-left: auto;
+      }
+      .hero-grid {
+        grid-template-columns: 3fr 2fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <div class="logo">PLAQUETTE</div>
+        <a class="cta" href="#cta">Réserver une conversation</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Programme intensif B2B</div>
+        <h1>Transformez votre chaos commercial en machine de vente prévisible</h1>
+        <p class="lead">Accompagnement dédié aux PME B2B de 5 à 30 M€ de CA : structurez vos méthodes, accélérez votre prospection et sécurisez chaque opportunité grâce à un système de vente pilotable.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:1rem; align-items:center;">
+          <a class="cta" href="#cta">Planifier 20 min</a>
+          <span class="tagline">Sans engagement · Focus résultats</span>
+        </div>
+      </div>
+      <div class="card">
+        <h3>Ce que vous gagnez</h3>
+        <div class="list">
+          <span>Méthode commerciale unifiée et maîtrisée.</span>
+          <span>Pipeline complet, lisible et pilotable.</span>
+          <span>Rendez-vous structurés avec taux de conversion renforcé.</span>
+          <span>Manager libéré pour la stratégie et la montée en compétence.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Contexte</div>
+      <h2>Vous sentez le potentiel, mais pas la structure pour l’exploiter</h2>
+      <p class="lead">Méthodes hétérogènes, pipeline fragile, prospects qui stagnent… Les signaux faibles deviennent des pertes d’opportunités concrètes. Sans système solide, chaque mois se solde par des prévisions floues et de l’énergie dispersée.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Les symptômes</h3>
+          <div class="list">
+            <span>Chacun vend « à sa façon », impossible d’harmoniser.</span>
+            <span>Pipeline incomplet ou obsolète, difficile à piloter.</span>
+            <span>Rendez-vous qui ne débouchent pas sur des ventes.</span>
+            <span>Prospects qui avancent lentement, voire pas du tout.</span>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Le coût caché</h3>
+          <div class="list">
+            <span>Perte d’opportunités et d’avance concurrentielle.</span>
+            <span>Prévisibilité quasi nulle, décisions au doigt mouillé.</span>
+            <span>Dirigeants accaparés par l’opérationnel au lieu de la stratégie.</span>
+            <span>Inertie face aux nouveaux usages IA.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Transformation</div>
+      <h2>Avant / Après : une machine commerciale lisible</h2>
+      <p class="lead">Nous orchestrons une bascule complète : de la prospection aléatoire à un système répétable, du discours flou à un narratif différenciant, d’un management pompier à un pilotage stratégique.</p>
+      <div class="before-after">
+        <div>
+          <div class="badge">Avant</div>
+          <ul>
+            <li>Méthodes hétérogènes, résultats irréguliers.</li>
+            <li>Prospection aléatoire, peu de momentum.</li>
+            <li>Rendez-vous improvisés, conversions faibles.</li>
+            <li>Discours flou, peu impactant.</li>
+            <li>Manager occupé à éteindre les feux.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="badge">Après</div>
+          <ul>
+            <li>Méthode commerciale unifiée, pilotage clair.</li>
+            <li>Machine de prospection régulière, maîtrisée.</li>
+            <li>Rendez-vous préparés, conversions renforcées.</li>
+            <li>Narratif clair, différenciant.</li>
+            <li>Manager focalisé sur la stratégie et les compétences.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Offre</div>
+      <h2>Un accompagnement intensif, pensée dojo</h2>
+      <p class="lead">Une combinaison unique d’entraînement terrain, de structuration organisationnelle et d’intégration IA pour activer une croissance prévisible.</p>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Entraînement & coaching</h3>
+          <ul class="list" style="list-style:none; padding:0;">
+            <span>Sessions dojo, répétitions et jeux de rôle.</span>
+            <span>Feedbacks individuels, correction des réflexes clés.</span>
+            <span>Montée en compétence continue.</span>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Structuration commerciale</h3>
+          <ul class="list" style="list-style:none; padding:0;">
+            <span>Processus clarifiés, méthodes unifiées, outils alignés.</span>
+            <span>Scripts, checklists et cadrage des rendez-vous.</span>
+            <span>Machine de prospection régulière.</span>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>IA & performance</h3>
+          <ul class="list" style="list-style:none; padding:0;">
+            <span>Intégration RAG et automatisations tactiques.</span>
+            <span>Production de contenus assistée.</span>
+            <span>Gains de productivité mesurables.</span>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Bénéfices</div>
+      <h2>Neuromarketing intégré pour sécuriser vos décisions</h2>
+      <div class="cards-grid">
+        <div class="card">
+          <h3>Biais d’autorité</h3>
+          <p>Vous vous appuyez sur un spécialiste ayant formé des dizaines d’équipes B2B. La crédibilité rassure vos équipes et vos dirigeants.</p>
+        </div>
+        <div class="card">
+          <h3>Heuristique de simplification</h3>
+          <p>Vos commerciaux savent quoi dire, quand et comment. La friction disparaît, la vélocité augmente.</p>
+        </div>
+        <div class="card">
+          <h3>Réduction du risque</h3>
+          <p>Le système de vente devient stable et reproductible, vous retrouvez une gouvernance sereine.</p>
+        </div>
+        <div class="card">
+          <h3>Aversion à la perte</h3>
+          <p>Chaque prospect est traité au bon niveau. Vous stoppez l’hémorragie invisible de clients perdus.</p>
+        </div>
+        <div class="card">
+          <h3>Projection positive</h3>
+          <p>Conversions en hausse, montée en compétence et croissance redevenue prévisible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Preuves</div>
+      <h2>Des résultats tangibles sur le terrain</h2>
+      <p class="lead">Réalisations menées auprès de PME industrielles et services B2B de 8 à 25 M€ de CA.</p>
+      <div class="stats">
+        <div class="stat-card">
+          <strong>+45%</strong>
+          <span>Amélioration du taux de transformation après accompagnement.</span>
+        </div>
+        <div class="stat-card">
+          <strong>x2</strong>
+          <span>Vitesse de prospection doublée sans recruter.</span>
+        </div>
+        <div class="stat-card">
+          <strong>100%</strong>
+          <span>Structuration commerciale complète sur plusieurs PME.</span>
+        </div>
+      </div>
+      <p class="tagline" style="margin-top:1.5rem;">Exemples anonymisés pour confidentialité, mais chaque mission est documentée.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">Processus</div>
+      <h2>Comment nous sécurisons la transformation</h2>
+      <div class="process">
+        <div class="process-step">
+          <h3>Conversation stratégique (20 min)</h3>
+          <p>Analyse de votre situation actuelle, de vos priorités et des blocages qui freinent votre croissance.</p>
+        </div>
+        <div class="process-step">
+          <h3>Diagnostic structuré</h3>
+          <p>Cartographie des méthodes, outils et comportements. Identification des quick wins et des leviers IA.</p>
+        </div>
+        <div class="process-step">
+          <h3>Entraînement et structuration</h3>
+          <p>Format dojo + coaching terrain pour installer les bons réflexes, scripts et process.</p>
+        </div>
+        <div class="process-step">
+          <h3>Pilotage & optimisation</h3>
+          <p>Suivi des KPIs, ajustements continus, transfert d’autonomie pour une machine durable.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="eyebrow">FAQ</div>
+      <h2>Vos questions, nos réponses</h2>
+      <div class="cards-grid">
+        <div class="faq-item">
+          <h3>Pour qui est l’accompagnement&nbsp;?</h3>
+          <p>PME B2B (industrie, services, tech) réalisant entre 5 et 30 M€ de CA, avec une équipe commerciale déjà en place.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Combien de temps dure la mission&nbsp;?</h3>
+          <p>Le format intensif s’étale généralement sur 8 à 12 semaines, avec des points hebdomadaires et un suivi managérial rapproché.</p>
+        </div>
+        <div class="faq-item">
+          <h3>L’IA est-elle réellement intégrée&nbsp;?</h3>
+          <p>Oui. Nous identifions les usages pertinents (RAG, automatisations, contenus) pour générer des gains rapides et mesurables.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Y a-t-il un engagement minimum&nbsp;?</h3>
+          <p>La conversation stratégique est sans engagement. Le déploiement est co-construit selon vos priorités et votre rythme.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" style="background: linear-gradient(135deg, #162038, #0b1426);">
+    <div class="container" style="text-align:center;">
+      <div class="eyebrow">Passer à l’action</div>
+      <h2>Réservez votre conversation stratégique</h2>
+      <p class="lead">20 minutes pour identifier 2 à 3 leviers qui peuvent transformer vos résultats commerciaux dès ce trimestre.</p>
+      <a class="cta" href="mailto:contact@plaquette.com?subject=Conversation%20strat%C3%A9gique">Je planifie un échange</a>
+      <p class="tagline" style="margin-top:1rem;">Dirigeants B2B uniquement · Sans engagement</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2024 Plaquette Commerciale – Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
